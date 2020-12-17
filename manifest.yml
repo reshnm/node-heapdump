@@ -1,0 +1,6 @@
+applications:
+- name: heapdumptest-d064470
+  command: node index.js
+  memory: 1G
+  random-route: true
+  services:
