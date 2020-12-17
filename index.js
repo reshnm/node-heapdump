@@ -17,7 +17,7 @@ function writeHeapSnapshot() {
 
         output.on('close', function() {
             fs.unlinkSync(snapshotFile);
-            console.log(`Heap snapshot archive has been written to ${snapshotName}.zip (${archive.pointer()} total bytes)`);
+            console.log(`Heap snapshot archive has been written to ${fs.realpathSync(snapshotFile + '.zip')} (${archive.pointer()} total bytes)`);
         });
     });
 }
