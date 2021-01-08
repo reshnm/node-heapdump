@@ -1,5 +1,6 @@
 const heapdump = require('heapdump');
 const archiver = require('archiver');
+const readline = require('readline');
 const fs = require('fs');
 const http = require('http');
 
@@ -21,6 +22,18 @@ function writeHeapSnapshot() {
         });
     });
 }
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+});
+
+rl.on('line', function(line){
+    if (line === 'hd') {
+        writeHeapSnapshot();
+    }
+});
 
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
